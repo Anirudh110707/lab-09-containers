@@ -19,7 +19,7 @@ In Step 4, you ran the analysis once with `-v ~/.aws:/home/app/.aws:ro` only, wi
 
 **Your answer:** Explain, step by step, where the container found the Atlas settings in that run.
 
-The mounted .aws directory gave the container access to my AWS credentials. Since the MongoDB environment variables were not provided, get_atlas_settings() used those credentials to retrieve the mongodb_credentials parameter from AWS Systems Manager. The container then used those settings to connect to MongoDB Atlas.
+The mounted `.aws` directory gave the container access to my AWS credentials. Since the MongoDB environment variables were not provided, `get_atlas_settings()` used those credentials to retrieve the `mongodb_credentials` parameter from AWS Systems Manager. The container then used those settings to connect to MongoDB Atlas.
 
 ## 3. Same tag, different image
 
@@ -28,7 +28,7 @@ Run `docker images book-analysis`, and note the image ID of `book-analysis:0.1.0
 **Your answer:** Paste the image ID from before and after the rebuild. Why is it a problem for someone who uses your image that `0.1.0` now names a different image, and what should you have done instead?
 
 - Before rebuild: `497775619f0e`
-- After rebuild: `INSERT_NEW_IMAGE_ID`
+- After rebuild: `522f3adabe60`
 
-Using the same tag for a different image is a problem because someone who pulls version 0.1.0 later may receive a different image than before, making it difficult to reproduce the original results. Instead, I should have used a new version tag, such as 0.1.1, for the updated image.
+Using the same tag for a different image is a problem because someone who pulls version 0.1.0 later may receive a different image than before, making it difficult to reproduce the original environment. Instead, I should have used a new version tag, such as 0.1.1, for the updated image.
 
